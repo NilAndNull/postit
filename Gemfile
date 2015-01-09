@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # Bootstrap Web Front-End Framework
 gem 'bootstrap-sass', '~> 3.3.1.0'
 
+# Autoprefixer is a tool to parse CSS and add vendor prefixes to CSS rules using values from the Can I Use.
+gem 'autoprefixer-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
