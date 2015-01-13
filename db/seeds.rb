@@ -41,6 +41,15 @@ users = [];
   users.push(User.create(username: username))
 end
 
+# Create categories
+
+3.times do
+  name = Faker::Hacker.noun.capitalize
+  Category.create(name: name)
+end
+
+all_categories = Category.all
+
 users.each do |user|
 
   # Create posts per user
@@ -55,7 +64,10 @@ users.each do |user|
                      url: url,
                      creator: user)
 
-    #Create comments per post from random users
+    # Associate one random category to post
+    post.categories << all_categories.sample
+
+    # Create comments per post from random users
     3.times do
       body = Faker::Lorem.sentences(Random.rand(1...5))
       Comment.create(body: body, creator: users.sample, post: post)
@@ -65,12 +77,10 @@ users.each do |user|
 
 end
 
-#Create categories
 
-3.times do
-  name = Faker::Hacker.noun.capitalize
-  Category.create(name: name)
-end
+
+
+
 
 
 
