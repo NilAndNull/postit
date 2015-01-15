@@ -1,0 +1,14 @@
+
+<!-- Post categories -->
+<p>
+  <%= render @post.categories %>
+</p>
+
+<!-- Post title -->
+<%= render 'shared/content_title', title: @post.title %>
+
+<!-- Post description -->
+<p>
+  <%= @post.description %>
+</p>
+<hr/>

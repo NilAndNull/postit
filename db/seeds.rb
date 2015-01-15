@@ -10,13 +10,13 @@
 first_user = User.create(username: 'ablm')
 first_post = Post.create(title: "My first post", 
                          description: "I sure hope this works!", 
-                         url: "www.yahoo.com", 
+                         url: "https://www.yahoo.com", 
                          creator: first_user)
 
 second_user = User.create(username: 'jpcr')
 second_post = Post.create(title: "Hello World", 
                           description: "Good morning!", 
-                          url: "www.google.com", 
+                          url: "https://www.google.com", 
                           creator: second_user)
 
 first_comment = Comment.create(body: 'One Patato!',
@@ -56,7 +56,7 @@ users.each do |user|
   10.times do
 
     title = Faker::Lorem.sentence
-    description = Faker::Lorem.sentences(Random.rand(3...10))
+    description = Faker::Lorem.sentence(Random.rand(3...10))
     url = Faker::Internet.url
 
     post = Post.create(title: title, 

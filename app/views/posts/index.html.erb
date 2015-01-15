@@ -1,2 +1,27 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<%= render 'shared/content_title', title: 'All Posts' %>
+
+<% @posts.each do |post| %>
+  <div class="row">
+    <div class="col-md-8 well">
+      <!-- Post categories -->
+      <%= render post.categories %>
+    
+      <!-- Post title -->
+      <h4><%= link_to post.title, post.url %></h4>
+      
+      <!-- Post description -->
+      <p><%= post.description %></p>
+      
+      <!-- Post who and when -->
+      <p>
+        <span class="quiet">posted by </span><%= post.creator.username %>
+        <small> at <%= post.created_at %></small>
+      </p>
+      
+      <!-- Post comments -->
+      <span>
+        <%= link_to("#{post.comments.size} comments", post_path(post)) %>
+      </span>
+    </div>
+  </div>
+<% end %>
