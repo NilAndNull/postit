@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'shared/error_messages', model: @category %>
+    <div class="well">
+      <%= form_for @category, html: {role: 'form'}  do |f| %>
+        
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit class: 'btn btn-primary'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

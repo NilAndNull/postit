@@ -1,0 +1,10 @@
+
+<p class="pull-right">
+  <%= link_to 'Edit', edit_category_path(@category) %> | 
+  <%= link_to 'Delete', category_path(@category), 
+                        method: :delete, 
+                        data: { confirm: "Are you sure ?" } %>
+</p>
+
+<!-- Category name -->
+<%= render 'shared/content_title', title: @category.name %>

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :get_all_categories, except: [:destroy]
+
   def index
     @posts = Post.order(created_at: :desc).all
   end
@@ -19,7 +21,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = 'Your post was successfully created!'
-      redirect_to posts_path
+      redirect_to posts_url
     else
       render 'new'
     end
@@ -34,7 +36,7 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       flash[:success] = 'Your post was successfully updated!'
-      redirect_to post_path(@post)
+      redirect_to post_url(@post)
     else
       render 'edit'
     end
