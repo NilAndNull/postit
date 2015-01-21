@@ -12,6 +12,7 @@
 #
 # Indexes
 #
+#  index_posts_on_url      (url) UNIQUE
 #  index_posts_on_user_id  (user_id)
 #
 
@@ -22,9 +23,14 @@ class Post < ActiveRecord::Base
   has_many :categories, through: :post_categories
 
   validates :title, presence: true
+  validates :title, length: {minimum: 5}
+
   validates :url, presence: true
   validates :url, format: { with: URI.regexp }, 
                           if: Proc.new { |a| a.url.present? }
+  validates :url, uniqueness: true
+
+  validates :description, presence: true
 
 
 end

@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update_attributes(post_params)
+    if @post.update(post_params)
       flash[:success] = 'Your post was successfully updated!'
       redirect_to post_path(@post)
     else
