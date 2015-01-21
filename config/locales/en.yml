@@ -21,3 +21,14 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    attributes:
+      post:
+        url: "URL"
+    errors:
+      models:
+        post:
+          attributes:
+            url:
+              invalid: "invalid format. Make sure it starts with http:// or https://"

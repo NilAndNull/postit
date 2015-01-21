@@ -7,8 +7,22 @@
 <!-- Post title -->
 <%= render 'shared/content_title', title: @post.title %>
 
-<!-- Post description -->
-<p>
-  <%= @post.description %>
-</p>
-<hr/>
+<div class="row">
+  <div class="col-md-4">
+    <div class="well">
+      
+      <!-- Post description -->
+      <p>
+        <%= @post.description %> 
+      </p>
+      
+      <small>
+        <%= link_to @post.url.downcase, @post.url %>
+      </small>
+      <br/>
+      <small>
+        <%= link_to 'Edit', edit_post_path(@post) %>
+      </small>
+    </div>
+  </div>
+</div>

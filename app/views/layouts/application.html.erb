@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +13,9 @@
   </head>
   <body>
     <%= render 'layouts/navigation' %>
-    
     <div id="main-container" class="container">
-      <div class="row">
-        <div class="span-xs-12">
-          <%= render 'layouts/messages' %>
-          <%= yield %>
-        </div>
-      </div>
-      <footer>
-      </footer>
-      </div> <!--! end of .container -->
-    </body>
-  </html>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
