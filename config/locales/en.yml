@@ -26,6 +26,8 @@ en:
     attributes:
       post:
         url: "URL"
+      comment:
+        body: "Comment"
     errors:
       models:
         post:

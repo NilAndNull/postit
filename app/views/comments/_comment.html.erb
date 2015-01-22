@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <p><%= comment.body %></p>
+      
+      <p>
+        <span class="quiet">posted by </span>
+        <%= comment.creator.present? ? comment.creator.username : "Anonymous" %>
+        <small> at <%= comment.created_at %></small>
+      </p>
+    </div>
+  </div>
+</div>
