@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :get_all_categories, except: [:destroy]
 
   def show
     @category = Category.find(params[:id])
@@ -20,26 +19,26 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def edit
-    @category = Category.find(params[:id])
-  end
+  # def edit
+  #   @category = Category.find(params[:id])
+  # end
 
-  def update
-    @category = Category.find(params[:id])
+  # def update
+  #   @category = Category.find(params[:id])
 
-    if @category.update(category_params)
-      flash[:success] = 'The category was updated successfully.'
-      redirect_to category_url
-    else
-      render 'edit'
-    end
-  end
+  #   if @category.update(category_params)
+  #     flash[:success] = 'The category was updated successfully.'
+  #     redirect_to category_url
+  #   else
+  #     render 'edit'
+  #   end
+  # end
 
-  def destroy
-    Category.find(params[:id]).destroy
-    flash[:success] = 'The category was deleted successfully.'
-    redirect_to posts_url
-  end
+  # def destroy
+  #   Category.find(params[:id]).destroy
+  #   flash[:success] = 'The category was deleted successfully.'
+  #   redirect_to posts_url
+  # end
 
   private 
 

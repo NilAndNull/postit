@@ -1,10 +1,18 @@
 
-<p class="pull-right">
-  <%= link_to 'Edit', edit_category_path(@category) %> | 
-  <%= link_to 'Delete', category_path(@category), 
+<!-- <p class="pull-right">
+  <%# link_to 'Edit', edit_category_path(@category) %> | 
+  <%# link_to 'Delete', category_path(@category), 
                         method: :delete, 
                         data: { confirm: "Are you sure ?" } %>
-</p>
+</p> -->
 
-<!-- Category name -->
-<%= render 'shared/content_title', title: @category.name %>
+<% all_posts = link_to 'All Posts', posts_path %>
+<%= render 'shared/content_title', title: "#{all_posts} > #{@category.name}".html_safe %>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= render @category.posts %>
+  </div>
+</div>
+
+

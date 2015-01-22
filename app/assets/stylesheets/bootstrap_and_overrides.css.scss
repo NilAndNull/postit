@@ -14,3 +14,14 @@
   padding: inherit;
   background-color: inherit;
 }
+
+.badge {
+  a, 
+  a:hover, 
+  a:visited,
+  a:active,
+  a:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+  } 
+}

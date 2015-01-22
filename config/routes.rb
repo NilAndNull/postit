@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :categories, except: [:index]
+  #resources :categories, except: [:index]
+  resources :categories, only: [:new, :show, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

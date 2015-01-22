@@ -1,0 +1,22 @@
+<div class="well">
+  <!-- Post categories -->
+  <%= render post.categories %>
+  
+  <!-- Post title -->
+  <h4><%= link_to post.title, post.url %></h4>
+  
+  <!-- Post description -->
+  <p><%= post.description %></p>
+  
+  <!-- Post who and when -->
+  <p>
+  <span class="quiet">posted by </span>
+  <%= post.creator.present? ? post.creator.username : "Anonymous" %>
+  <small> at <%= post.created_at %></small>
+  </p>
+  
+  <!-- Post comments -->
+  <span>
+  <%= link_to("#{post.comments.size} comments", post_path(post)) %>
+  </span>
+</div>
