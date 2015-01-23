@@ -3,41 +3,39 @@
     <div class="navbar-header">
       <button type="button" 
             class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
       <%= link_to "Postit!", root_path, :class => 'navbar-brand' %>
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li>
             <%= link_to 'All Posts', posts_path %>
         </li>
+        <li>
+          <button class="btn btn-success navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
+            Categories <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <% categories = Category.order(:name).all %>
+            <% categories.each do |category| %>
+              <li><%= link_to category.name.capitalize, category_path(category) %></li>
+            <% end %>
+            <% if categories.any? %>
+              <li class="divider"></li>
+            <% end %>
+            <li>
+              <%= link_to new_category_path do %>
+                <span class="glyphicon glyphicon-plus"></span> New Category
+              <% end %>
+            </li>
+          </ul>
+        </li>
       </ul>
-      
-      <div class="nav navbar-nav">
-        <div class="dropdown">
-            <button class="btn btn-default navbar-btn dropdown-toggle" type="button" id="categoriesDropdown" data-toggle="dropdown" aria-expanded="true">
-              Categories
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="categoriesDropdown">
-              <% categories = Category.order(:name).all %>
-              <% categories.each do |category| %>
-                <li><%= link_to category.name.capitalize, category_path(category) %></li>
-              <% end %>
-              <% if categories.any? %>
-                <li class="divider"></li>
-              <% end %>
-              <li>
-                <%= link_to new_category_path do %>
-                  <span class="glyphicon glyphicon-plus"></span> New Category
-                <% end %>
-              </li>
-            </ul>
-        </div>
-      </div>
       <div class="nav navbar-nav navbar-right">
           <%= button_to 'New Post', new_post_path, method: :get, class: 'btn btn-success navbar-btn' %>
       </div>
