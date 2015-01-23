@@ -42,7 +42,7 @@
       <h4>
         Comments:
       </h4>
-      <%= render @post.comments %>
+      <%= render @post.comments.order(created_at: :desc) %>
     </div>
   </div>
 <% end %>

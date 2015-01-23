@@ -6,7 +6,7 @@
       <p>
         <span class="quiet">posted by </span>
         <%= comment.creator.present? ? comment.creator.username : "Anonymous" %>
-        <small> at <%= comment.created_at %></small>
+        <small> at <%= I18n.l comment.created_at, format: :long %></small>
       </p>
     </div>
   </div>
