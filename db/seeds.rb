@@ -7,13 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-first_user = User.create(username: 'ablm')
+first_user = User.create(username: 'ablm', 
+                         password: 'ablm')
+
 first_post = Post.create(title: "My first post", 
                          description: "I sure hope this works!", 
                          url: "https://www.yahoo.com", 
                          creator: first_user)
 
-second_user = User.create(username: 'jpcr')
+second_user = User.create(username: 'jpcr', 
+                         password: 'jpcr')
+
 second_post = Post.create(title: "Hello World", 
                           description: "Good morning!", 
                           url: "https://www.google.com", 
@@ -38,7 +42,8 @@ users = [];
 # Create users
 8.times do 
   username = Faker::Internet.user_name
-  users.push(User.create(username: username))
+  users.push(User.create(username: username, 
+                         password: username))
 end
 
 # Create categories
@@ -69,7 +74,7 @@ users.each do |user|
 
     # Create comments per post from random users
     3.times do
-      body = Faker::Lorem.sentences(Random.rand(1...5))
+      body = Faker::Lorem.sentence(Random.rand(1...5))
       Comment.create(body: body, creator: users.sample, post: post)
     end
 

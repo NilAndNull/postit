@@ -6,4 +6,11 @@ module ApplicationHelper
     end 
   end
 
+  def require_authentication
+    if !logged_in?
+      flash[:danger] = "Authentication is needed. Please log in."
+      redirect_to login_url
+    end
+  end
+
 end

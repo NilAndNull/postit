@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_authentication, only: [:create]
 
   def create
     @post = Post.find(params[:post_id])
@@ -8,9 +9,7 @@ class CommentsController < ApplicationController
     # saved yet. 
     @comment = Comment.new(comment_params)
     @comment.post = @post
-
-    # TODO: Change the line below to set the current logged in user instead
-    @comment.creator = User.first
+    @comment.creator = current_user
 
     if @comment.save
       flash[:success] = 'The comment was created successfully.'

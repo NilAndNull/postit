@@ -16,29 +16,52 @@
         <li>
             <%= link_to 'All Posts', posts_path %>
         </li>
-        <li>
-          <button class="btn btn-success navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
-            Categories <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <% categories = Category.order(:name).all %>
-            <% categories.each do |category| %>
-              <li><%= link_to category.name.capitalize, category_path(category) %></li>
-            <% end %>
-            <% if categories.any? %>
-              <li class="divider"></li>
-            <% end %>
+      </ul>
+
+      <div class="btn-group">
+        <button class="btn btn-success navbar-btn dropdown-toggle" 
+                type="button" 
+                data-toggle="dropdown">
+          Categories <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <% categories = Category.order(:name).all %>
+          <% categories.each do |category| %>
+            <li><%= link_to category.name.capitalize, category_path(category) %></li>
+          <% end %>
+          <% if categories.any? && logged_in? %>
+            <li class="divider"></li>
+          <% end %>
+          <% if logged_in? %>
             <li>
               <%= link_to new_category_path do %>
                 <span class="glyphicon glyphicon-plus"></span> New Category
               <% end %>
             </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="nav navbar-nav navbar-right">
-          <%= button_to 'New Post', new_post_path, method: :get, class: 'btn btn-success navbar-btn' %>
+          <% end %>
+        </ul>
       </div>
+
+      <% if logged_in? %>
+        <div class="btn-group">
+          <%= button_to 'New Post', new_post_path, method: :get, class: 'btn btn-success navbar-btn' %>
+        </div>
+      <% end %>
+
+      <% if logged_in? %>
+      <div class="btn-group navbar-right">
+        <%= button_to 'Log Out', logout_path, method: :delete, class: 'btn btn-success navbar-btn' %>
+      </div>
+      <% else %>
+      <div class="btn-group navbar-right">
+        <%= button_to 'Log In', login_path, method: :get, class: 'btn btn-success navbar-btn' %>
+      </div>
+      
+      <div class="btn-group navbar-right">
+        <%= button_to 'Sign Up', signup_path, method: :get, class: 'btn btn-success navbar-btn' %>
+      </div>
+      
+      <% end %>
     </div>
   </div>
 </nav>

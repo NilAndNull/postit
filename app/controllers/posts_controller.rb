@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_authentication, except: [:index, :show]
 
   def index
     @posts = Post.order(created_at: :desc).all
@@ -15,9 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    
-    # TODO: Change the line below to set the current logged in user instead
-    @post.creator = User.first
+    @post.creator = current_user
 
     if @post.save
       flash[:success] = 'Your post was successfully created!'

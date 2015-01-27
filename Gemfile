@@ -38,7 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker', '>= 1.4.3'
 
 # Use ActiveModel has_secure_password
-#gem 'bcrypt', '~> 3.1.9'
+gem 'bcrypt', '~> 3.1.9'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
