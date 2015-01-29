@@ -17,6 +17,8 @@
 #
 
 class Post < ActiveRecord::Base
+  include Voteable
+
   belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
   has_many :comments, dependent: :destroy
   has_many :post_categories
@@ -31,6 +33,5 @@ class Post < ActiveRecord::Base
   validates :url, uniqueness: true
 
   validates :description, presence: true
-
 
 end
