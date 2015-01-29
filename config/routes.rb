@@ -9,10 +9,18 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  get 'comments/create'
-
   resources :posts, except: [:destroy] do 
     resources :comments, only: [:create]
+
+    member do
+      post :vote
+    end
+  end
+
+  resources :comments, only: [:vote] do
+    member do
+      post :vote
+    end
   end
   
   resources :categories, only: [:new, :show, :create]

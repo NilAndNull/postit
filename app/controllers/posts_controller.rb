@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  include CastVotes
+
   before_action :require_authentication, except: [:index, :show]
 
   def index
@@ -39,6 +41,20 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def vote
+    @post = Post.find(params[:id])
+    @vote = cast_vote(@post)
+
+    if @vote.valid?
+      flash[:success] = 'Your vote was successfully casted!'
+      redirect_to :back
+    else
+      flash[:danger] = "You have already cast a vote. You can't cast more than one vote."
+      redirect_to :back
+    end
+
   end
 
   private

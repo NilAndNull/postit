@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include CastVotes
+
   before_action :require_authentication, only: [:create]
 
   def create
@@ -18,6 +20,19 @@ class CommentsController < ApplicationController
       render 'posts/show'
     end
 
+  end
+
+  def vote
+    @comment = Comment.find(params[:id])
+    @vote = cast_vote(@comment)
+
+    if @vote.valid?
+      flash[:success] = 'Your vote was successfully casted!'
+      redirect_to :back
+    else
+      flash[:danger] = "You have already cast a vote. You can't cast more than one vote."
+      redirect_to :back
+    end
   end
 
   private
