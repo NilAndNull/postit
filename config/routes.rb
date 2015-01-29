@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
-  get 'signup', to: 'users#new'
-  post 'signup', to: 'users#create'
+  # You can have the root of your site routed with "root"
+  root 'posts#index'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -9,18 +11,16 @@ Rails.application.routes.draw do
 
   get 'comments/create'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'posts#index'
-
   resources :posts, except: [:destroy] do 
     resources :comments, only: [:create]
   end
-
-  #resources :categories, except: [:index]
+  
   resources :categories, only: [:new, :show, :create]
+
+  # Users
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+  resources :users, only: [:show, :edit, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

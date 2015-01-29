@@ -5,7 +5,11 @@
       
       <p>
         <span class="quiet">posted by </span>
-        <%= comment.creator.present? ? comment.creator.username : "Anonymous" %>
+          <% if comment.creator.present? %>
+            <%= link_to comment.creator.username, user_path(comment.creator) %>
+          <% else %>
+            <%= "Anonymous" %>
+          <% end %>
         <small> at <%= I18n.l comment.created_at, format: :long %></small>
       </p>
     </div>
