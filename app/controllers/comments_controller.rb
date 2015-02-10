@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :require_authentication, only: [:create]
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by(slug: params[:post_slug])
 
     # Used this form, instead of @post.comments.new(comment_params), since it adds
     # comment object automatically to @post.comments collection, even if it's not

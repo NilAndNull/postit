@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129144829) do
+ActiveRecord::Schema.define(version: 20150210172756) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -49,8 +51,10 @@ ActiveRecord::Schema.define(version: 20150129144829) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.string   "slug"
   end
 
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
   add_index "posts", ["url"], name: "index_posts_on_url", unique: true
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
@@ -59,8 +63,10 @@ ActiveRecord::Schema.define(version: 20150129144829) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+    t.string   "slug"
   end
 
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
   create_table "votes", force: :cascade do |t|

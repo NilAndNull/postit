@@ -7,9 +7,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string
+#  slug            :string
 #
 # Indexes
 #
+#  index_users_on_slug      (slug) UNIQUE
 #  index_users_on_username  (username) UNIQUE
 #
 

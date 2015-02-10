@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :posts, except: [:destroy] do 
+  resources :posts, param: :slug, except: [:destroy] do
     resources :comments, only: [:create]
 
     member do
@@ -22,13 +22,13 @@ Rails.application.routes.draw do
       post :vote
     end
   end
-  
-  resources :categories, only: [:new, :show, :create]
+
+  resources :categories, param: :slug, only: [:new, :show, :create]
 
   # Users
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
-  resources :users, only: [:show, :edit, :update]
+  resources :users, param: :slug, only: [:show, :edit, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

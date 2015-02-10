@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:slug])
     @comment = Comment.new
   end
 
@@ -29,11 +29,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:slug])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:slug])
 
     if @post.update(post_params)
       flash[:success] = 'Your post was successfully updated!'
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def vote
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:slug])
     @vote = cast_vote(@post)
 
     if @vote.valid?

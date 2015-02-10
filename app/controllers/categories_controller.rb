@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :require_authentication, except: [:show]
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by(slug: params[:slug])
   end
 
   def new
@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
   #   redirect_to posts_url
   # end
 
-  private 
+  private
 
     def category_params
       params.require(:category).permit(:name)
