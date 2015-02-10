@@ -48,11 +48,24 @@ class PostsController < ApplicationController
     @vote = cast_vote(@post)
 
     if @vote.valid?
-      flash[:success] = 'Your vote was successfully casted!'
-      redirect_to :back
+      message = 'Your vote was successfully casted!'
+
+      respond_to do |format|
+        format.html { flash[:success] = message }
+        format.js { flash.now[:success] = message }
+      end
     else
-      flash[:danger] = "You have already cast a vote. You can't cast more than one vote."
-      redirect_to :back
+      message = "You have already cast a vote. You can't cast more than one vote."
+
+      respond_to do |format|
+        format.html { flash[:danger] = message }
+        format.js { flash.now[:danger] = message }
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render partial: 'votes/vote', locals: {voteable: @post} }
     end
 
   end

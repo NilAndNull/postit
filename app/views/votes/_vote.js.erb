@@ -1,0 +1,2 @@
+$("#flash-messages").html("<%= escape_javascript(render partial: 'layouts/messages' ) %>");
+$("#total_votes_for_<%=voteable.id%>").html("<%= voteable.total_votes.to_s %>");
