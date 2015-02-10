@@ -3,7 +3,7 @@
   <%= render 'shared/error_messages', object: user %>
     <div class="well">
 
-    <%= form_for user, url: user.new_record? ? signup_path : user_path, 
+    <%= form_for user, url: user.new_record? ? signup_path : user_path,
                        html: {role: 'form'} do |f| %>
       <div class="form-group">
         <%= f.label :username %>
