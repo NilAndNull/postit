@@ -20,6 +20,7 @@
 
 class Post < ActiveRecord::Base
   include Voteable
+  include Sluggable
 
   belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
   has_many :comments, dependent: :destroy
@@ -36,25 +37,5 @@ class Post < ActiveRecord::Base
 
   validates :description, presence: true
 
-  before_save :generate_slug
-
-
-  def generate_slug
-    original_slug = slug_candidate = self.title.to_slug
-
-    post = Post.find_by(slug: slug_candidate)
-    n = 2;
-    while post && post != self
-      slug_candidate = original_slug + "-#{n}"
-      post = Post.find_by(slug: slug_candidate)
-      n += 1
-    end
-
-    self.slug = slug_candidate
-  end
-
-  def to_param
-    self.slug
-  end
-
+  sluggable :title
 end

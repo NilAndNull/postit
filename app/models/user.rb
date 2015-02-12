@@ -16,6 +16,8 @@
 #
 
 class User < ActiveRecord::Base
+  include Sluggable
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -24,24 +26,6 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, length: {minimum: 5}, on: :create
 
-  before_save :generate_slug
+  sluggable :username
 
-
-  def generate_slug
-    original_slug = slug_candidate = self.username.to_slug
-
-    user = User.find_by(slug: slug_candidate)
-    n = 2;
-    while user && user != self
-      slug_candidate = original_slug + "-#{n}"
-      user = User.find_by(slug: slug_candidate)
-      n += 1
-    end
-
-    self.slug = slug_candidate
-  end
-
-  def to_param
-    self.slug
-  end
 end

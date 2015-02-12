@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/NilAndNull/voteable.git
+  revision: e17f18a7dc7bb3ffd5f3f83bc347ee5c9de8957b
+  specs:
+    voteable (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -242,4 +248,5 @@ DEPENDENCIES
   turbolinks
   uglifier (~> 2.6.0)
   unicorn (= 4.8.3)
+  voteable!
   web-console (~> 2.0)
