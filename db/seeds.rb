@@ -9,7 +9,8 @@
 
 first_user = User.create(username: 'ablm',
                          password: 'ablm',
-                         role: User::Role::ADMIN)
+                         role: User::Role::ADMIN,
+                         time_zone: Time.zone.name)
 
 first_post = Post.create(title: "My first post",
                          description: "I sure hope this works!",
@@ -18,7 +19,8 @@ first_post = Post.create(title: "My first post",
 
 second_user = User.create(username: 'jpcr',
                          password: 'jpcr',
-                         role: User::Role::ADMIN)
+                         role: User::Role::ADMIN,
+                         time_zone: Time.zone.name)
 
 second_post = Post.create(title: "Hello World",
                           description: "Good morning!",
@@ -45,7 +47,8 @@ users = [];
 8.times do
   username = Faker::Internet.user_name
   users.push(User.create(username: username,
-                         password: username))
+                         password: username,
+                         time_zone: Zonebie.set_random_timezone))
 end
 
 # Create categories

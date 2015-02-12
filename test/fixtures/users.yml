@@ -9,6 +9,7 @@
 #  password_digest :string
 #  slug            :string
 #  role            :string           default("user")
+#  time_zone       :string
 #
 # Indexes
 #

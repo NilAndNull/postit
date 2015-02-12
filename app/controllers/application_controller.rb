@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
+  include SessionsHelper
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  include SessionsHelper
+  # Set timezone defined to each user or use the default timezone
+  around_action :set_timezone, if: :current_user
 
   def require_authentication
     if !logged_in?
@@ -18,5 +21,15 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  private
+
+    def set_timezone
+      if logged_in? and current_user.time_zone
+        Time.use_zone(current_user.time_zone) { yield }
+      else
+        yield
+      end
+    end
 
 end

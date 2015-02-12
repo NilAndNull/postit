@@ -221,6 +221,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (~> 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    zonebie (0.5.1)
 
 PLATFORMS
   ruby
@@ -250,3 +251,4 @@ DEPENDENCIES
   unicorn (= 4.8.3)
   voteable!
   web-console (~> 2.0)
+  zonebie

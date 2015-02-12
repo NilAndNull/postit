@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @user = User.find_by(slug: params[:slug])
     @posts = @user.posts.order(created_at: :desc)
     @comments = @user.comments.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+      format.xml  { render xml:  @user }
+    end
   end
 
   def new
@@ -42,7 +48,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username, :password, :password_confirmation, :time_zone)
     end
 
     def require_same_user
