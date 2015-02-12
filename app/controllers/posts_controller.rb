@@ -30,10 +30,21 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find_by(slug: params[:slug])
+
+    if !creator_or_admin?
+      flash[:danger] = "You don't permissions to edit that post."
+      redirect_to root_url
+    end
+
   end
 
   def update
     @post = Post.find_by(slug: params[:slug])
+
+    if !creator_or_admin?
+      flash[:danger] = "You don't permissions to update that post."
+      redirect_to root_url
+    end
 
     if @post.update(post_params)
       flash[:success] = 'Your post was successfully updated!'
@@ -74,6 +85,10 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :url, :description, category_ids: [])
+    end
+
+    def creator_or_admin?
+      current_user == @post.creator or isAdmin?
     end
 
 end

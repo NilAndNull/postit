@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    if !logged_in? or current_user.role != User::Role::ADMIN
+      flash[:danger] = "You don't have permissions to perform this operation."
+      redirect_to root_url
+    end
+  end
+
 end

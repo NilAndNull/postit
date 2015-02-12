@@ -8,6 +8,7 @@
 #  updated_at      :datetime         not null
 #  password_digest :string
 #  slug            :string
+#  role            :string           default("user")
 #
 # Indexes
 #

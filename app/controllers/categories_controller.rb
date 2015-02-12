@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :require_authentication, except: [:show]
+  before_action :require_admin, only: [:new, :create]
 
   def show
     @category = Category.find_by(slug: params[:slug])

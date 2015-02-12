@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210172756) do
+ActiveRecord::Schema.define(version: 20150212103836) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -60,10 +60,11 @@ ActiveRecord::Schema.define(version: 20150210172756) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "password_digest"
     t.string   "slug"
+    t.string   "role",            default: "user"
   end
 
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150210172756) do
 
   add_index "votes", ["user_id", "voteable_id", "voteable_type"], name: "index_votes_on_user_id_and_voteable_id_and_voteable_type", unique: true
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["value"], name: "index_votes_on_value"
   add_index "votes", ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id"
 
 end

@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if logged_in? && (isAdmin? || @post.creator == current_user) %>
   <p class="pull-right">
   <%= link_to 'Edit', edit_post_path(@post) %>
   </p>
@@ -11,12 +11,12 @@
 <%= render 'shared/content_title', title: @post.title %>
 <div class="row">
   <div class="col-md-6">
-    
+
     <!-- Post description -->
     <p>
     <%= @post.description %>
     </p>
-    
+
     <small>
     <%= link_to @post.url.downcase, @post.url %>
     </small>

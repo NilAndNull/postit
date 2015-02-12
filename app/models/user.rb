@@ -8,6 +8,7 @@
 #  updated_at      :datetime         not null
 #  password_digest :string
 #  slug            :string
+#  role            :string           default("user")
 #
 # Indexes
 #
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :username, uniqueness: true
-  validates :password, length: {minimum: 5}, on: :create
+  validates :password, length: {minimum: 3}, on: :create
 
   sluggable :username
 

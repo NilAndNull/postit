@@ -14,6 +14,7 @@
 #
 #  index_votes_on_user_id                                    (user_id)
 #  index_votes_on_user_id_and_voteable_id_and_voteable_type  (user_id,voteable_id,voteable_type) UNIQUE
+#  index_votes_on_value                                      (value)
 #  index_votes_on_voteable_type_and_voteable_id              (voteable_type,voteable_id)
 #
 

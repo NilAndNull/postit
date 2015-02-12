@@ -7,20 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-first_user = User.create(username: 'ablm', 
-                         password: 'ablm')
+first_user = User.create(username: 'ablm',
+                         password: 'ablm',
+                         role: User::Role::ADMIN)
 
-first_post = Post.create(title: "My first post", 
-                         description: "I sure hope this works!", 
-                         url: "https://www.yahoo.com", 
+first_post = Post.create(title: "My first post",
+                         description: "I sure hope this works!",
+                         url: "https://www.yahoo.com",
                          creator: first_user)
 
-second_user = User.create(username: 'jpcr', 
-                         password: 'jpcr')
+second_user = User.create(username: 'jpcr',
+                         password: 'jpcr',
+                         role: User::Role::ADMIN)
 
-second_post = Post.create(title: "Hello World", 
-                          description: "Good morning!", 
-                          url: "https://www.google.com", 
+second_post = Post.create(title: "Hello World",
+                          description: "Good morning!",
+                          url: "https://www.google.com",
                           creator: second_user)
 
 first_comment = Comment.create(body: 'One Patato!',
@@ -40,9 +42,9 @@ second_category = Category.create(name: 'History')
 users = [];
 
 # Create users
-8.times do 
+8.times do
   username = Faker::Internet.user_name
-  users.push(User.create(username: username, 
+  users.push(User.create(username: username,
                          password: username))
 end
 
@@ -64,8 +66,8 @@ users.each do |user|
     description = Faker::Lorem.sentence(Random.rand(3...10))
     url = Faker::Internet.url
 
-    post = Post.create(title: title, 
-                     description: description, 
+    post = Post.create(title: title,
+                     description: description,
                      url: url,
                      creator: user)
 
@@ -81,14 +83,3 @@ users.each do |user|
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-

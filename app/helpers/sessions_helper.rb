@@ -22,4 +22,9 @@ module SessionsHelper
     user == current_user
   end
 
+  def isAdmin?
+    current_user.role == User::Role::ADMIN
+  end
+
+
 end
