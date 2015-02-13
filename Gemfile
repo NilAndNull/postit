@@ -46,7 +46,9 @@ gem 'bcrypt', '~> 3.1.9'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'voteable', :git => 'git://github.com/NilAndNull/voteable.git'
+gem 'voteable', path: 'gems/voteable'
+
+gem 'sluggable', path: 'gems/sluggable'
 
 group :development, :test do
 

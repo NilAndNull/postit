@@ -1,3 +1,5 @@
+require "sluggable/version"
+
 module Sluggable
   extend ActiveSupport::Concern
 

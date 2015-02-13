@@ -1,6 +1,10 @@
-GIT
-  remote: git://github.com/NilAndNull/voteable.git
-  revision: e17f18a7dc7bb3ffd5f3f83bc347ee5c9de8957b
+PATH
+  remote: gems/sluggable
+  specs:
+    sluggable (0.0.1)
+
+PATH
+  remote: gems/voteable
   specs:
     voteable (0.0.1)
 
@@ -244,6 +248,7 @@ DEPENDENCIES
   rails_12factor (= 0.0.3)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sluggable!
   spring
   sqlite3
   turbolinks
